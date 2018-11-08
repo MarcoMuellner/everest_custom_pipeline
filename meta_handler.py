@@ -14,7 +14,6 @@ jobs = []
 
 def add_job(job : Dict[str,Union[str,np.ndarray,List]]):
     job_obj = Job(**job)
-
     job_obj.run()
 
 def start():

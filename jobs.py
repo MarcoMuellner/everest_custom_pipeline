@@ -19,6 +19,7 @@ class Job:
         files = [f for f in listdir(self._jobPath) if isfile(join(self._jobPath, f))]
         print(self._jobList)
         for kicID,season in tuple(map(tuple,self._jobList)):
+            print(f"Running {kicID}")
 
             regex_fits = re.compile(rf".+{kicID}-c{season}.+\.fits") #check if job already done
             regex_pdf = re.compile(rf".+{kicID}-c{season}.+\.pdf")
@@ -26,7 +27,6 @@ class Job:
 
             if exists != []:
                 continue
-
             everest.missions.k2.GetData(kicID, download_only=True, season=season)
             everest.nPLD(kicID, season=season)
             everest.k2.GetCBVs(campaign=season)
