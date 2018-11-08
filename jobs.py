@@ -34,7 +34,8 @@ class Job:
 
             lowerPart = kicID % 100000
             upperPart = kicID - lowerPart
-            resultPath = f"{everestPath}c{season}/{upperPart}/{lowerPart}/"
+
+            resultPath = f"{everestPath}c{season}/{upperPart}/{str(lowerPart).zfill(6-len(str(lowerPart)))}/"
 
             files = [f for f in listdir(resultPath) if isfile(join(resultPath, f))]
 
