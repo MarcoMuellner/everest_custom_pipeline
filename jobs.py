@@ -6,7 +6,7 @@ import re
 import everest
 from shutil import copyfile
 
-everestPath = "/Users/marco/.everest2/k2/"
+everestPath = "/home/marco/.everest2/k2/"
 
 class Job:
     def __init__(self,name : str ,jobList : np.ndarray,doneJobs : List,jobPath : str):
