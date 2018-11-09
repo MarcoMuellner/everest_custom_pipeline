@@ -18,8 +18,10 @@ class Job:
     def run(self):
         files = [f for f in listdir(self._jobPath) if isfile(join(self._jobPath, f))]
         print(self._jobList)
+        n=0
         for kicID,season in tuple(map(tuple,self._jobList)):
-            print(f"Running {kicID}")
+            n +=1
+            print(f"Running {kicID} {n}/{len(self._jobList)}")
 
             regex_fits = re.compile(rf".+{kicID}-c{season}.+\.fits") #check if job already done
             regex_pdf = re.compile(rf".+{kicID}-c{season}.+\.pdf")
@@ -35,7 +37,7 @@ class Job:
             lowerPart = kicID % 100000
             upperPart = kicID - lowerPart
 
-            resultPath = f"{everestPath}c{season}/{upperPart}/{str(lowerPart).zfill(6)}/"
+            resultPath = f"{everestPath}c{season}/{upperPart}/{str(lowerPart).zfill(5)}/"
 
             files = [f for f in listdir(resultPath) if isfile(join(resultPath, f))]
 
